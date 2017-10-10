@@ -49,16 +49,24 @@ end
 
 def titleize(element)
   sentence = element.split
+  truncated_sentence = sentence.drop(1)
   titled = []
   if sentence.size == 1
   	capitalized = element.capitalize
   	capitalized
   else
-  	sentence.each do |word|
-  	  capitalized = word.capitalize
-  	  titled << capitalized
+  	first_letter = sentence[0].capitalize
+  	titled << first_letter
+  	truncated_sentence.each do |word|
+  		if word == "and" || word == "over" || word == "the" || word == "a" || word == "on"
+  	  		titled << word
+  		else  	  
+  		  capitalized = word.capitalize
+  		  titled << capitalized
+  		end
   	end
     titled.join(' ')
 
   end
 end
+

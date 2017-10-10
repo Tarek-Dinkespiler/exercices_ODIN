@@ -1,23 +1,24 @@
-def repeat(text, n=1)
-	a = [text] * n * ' '
-	puts a
-end
-
 def titleize(element)
   sentence = element.split
+  truncated_sentence = sentence.drop(1)
   titled = []
   if sentence.size == 1
-  	a = element.capitalize
-  	puts a
+  	capitalized = element.capitalize
+  	capitalized
   else
-  	sentence.each do |word|
-  	  a = word.capitalize
-  	  titled << a
+  	first_letter = sentence[0].capitalize
+  	titled << first_letter
+  	truncated_sentence.each do |word|
+  		if word == "and" || word == "over" || word == "the" || word == "a" || word == "on"
+  	  		titled << word
+  		else  	  
+  		  capitalized = word.capitalize
+  		  titled << capitalized
+  		end
   	end
     puts titled.join(' ')
 
   end
 end
 
-
-titleize("jaws")
+titleize("the bridge on the river kwaï")
